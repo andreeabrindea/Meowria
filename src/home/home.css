@@ -1,0 +1,41 @@
+.HOME{
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    margin-top: 5vh;
+    margin-left: 5vh;
+
+  }
+  
+  h1 {
+    color: #8cb1f7;
+    font-family: 'Astrella';
+  }
+  
+
+  .description {
+    width: 100vh;
+    font-size: 20px;
+    font-family: 'SourceSansPro-Regular';
+  }
+    
+    .headerImg {
+      float: left;
+      height: 50vh;
+      margin-right: 10vh ;
+      margin-left: 10vh;
+    }
+.donotforget{
+    margin-top: 5vh;
+    margin-right: 5vh;
+    font-size: 20px;
+    font-family: 'SourceSansPro-Regular';
+}
+.moreAbout{
+    margin-top: 50vh;
+    margin-right: 10vh;
+    font-size: 15px;
+    font-family: 'SourceSansPro-Regular';
+}

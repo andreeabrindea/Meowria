@@ -1,0 +1,18 @@
+.checkmark {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container label {
+  flex-basis: 33.33%;
+}
+form{
+    border-color: #8cb1f7;
+    border-radius: 5px;
+}
