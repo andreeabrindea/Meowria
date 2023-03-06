@@ -94,6 +94,30 @@ export default function MultiStepForm() {
                 <input type="checkbox" />
                 Checkbox 6
             </label>
+            <label class="checkbox">
+                <input type="checkbox" />
+                Checkbox 1
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" />
+                Checkbox 2
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" />
+                Checkbox 3
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" />
+                Checkbox 4
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" />
+                Checkbox 5
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" />
+                Checkbox 6
+            </label>
             </div>
 
             <button type="button" onClick={previousPage}>
@@ -107,8 +131,8 @@ export default function MultiStepForm() {
         <div>
           <h1>Type of Priority:</h1>
           <form onSubmit={nextPage}>
-         <p>FIP</p>
-         <p>Cold</p>
+         <p>Possible diagnose</p>
+         <p>Consult a vet or find one on the map.</p>
          <button type="button" onClick={previousPage}>
               Previous
             </button>
@@ -118,7 +142,7 @@ export default function MultiStepForm() {
       )}
           {currentPage === 5 && (
         <div>
-          <h1>Send the results to e-mail</h1>
+          <h1>Send the results to e-mail:</h1>
           <form onSubmit={nextPage}>
           <label>
               Email:
@@ -139,7 +163,7 @@ export default function MultiStepForm() {
 
       {currentPage === 6 && (
         <div>
-          <h2>Page 3</h2>
+          <h1>Done!</h1>
           <form onSubmit={handleSubmit}>
             <p>Form submitted!</p>
             <button type="button" onClick={previousPage}>

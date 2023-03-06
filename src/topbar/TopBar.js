@@ -1,4 +1,5 @@
 import "./topbar.css";
+import { Link } from "react-router-dom";
 import logo from "./queenMeowria.png";
 console.log(logo);
 export default function TopBar() {
@@ -9,9 +10,15 @@ export default function TopBar() {
              </div>
              <div className="topCenter">
         <ul className="TopList">
-          <li className="TopListItem">Home</li>
-          <li className="TopListItem">Find Clinics</li>
-          <li className="TopListItem">About</li>
+          <li className="TopListItem"><Link
+              className="link"
+              to="/"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              Home
+            </Link></li>
+          <li className="TopListItem"><Link to="/findClinics" style={{ textDecoration: "none", color: "inherit" }}>Find Clinics</Link></li>
+          <li className="TopListItem"><Link to="/about" style={{ textDecoration: "none", color: "inherit" }}>About</Link></li>
         </ul>
       </div>
         </div>

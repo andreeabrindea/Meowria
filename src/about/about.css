@@ -1,0 +1,13 @@
+.ABOUT{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.aboutWrapper{
+    margin-top: 10vh;
+    margin-left: 10vh;
+    margin-right: 10vh;
+    font-family: 'SourceSansPro-Regular';
+
+}

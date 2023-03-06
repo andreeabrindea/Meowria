@@ -12,6 +12,7 @@
   h1 {
     color: #8cb1f7;
     font-family: 'Astrella';
+    margin-bottom: 0px;
   }
   
 
@@ -38,4 +39,25 @@
     margin-right: 10vh;
     font-size: 15px;
     font-family: 'SourceSansPro-Regular';
+}
+.join{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15vh;
+    justify-content: center;
+    align-items: center;
+}
+.join > form{
+    display: flex;
+    flex-direction: column;
+    width: 40vh;
+}
+.multistepform{
+    margin-top: 10vh;
+}
+
+.joinButtons{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
 }

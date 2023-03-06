@@ -1,0 +1,13 @@
+.FindClinics{
+    display: flex;
+    flex-direction: column;
+}
+.map{
+  
+  margin-left: 100px;
+}
+.introduction{
+    margin-top: 100px;
+    margin-left: 100px;
+    font-family: 'SourceSansPro-Regular';
+}
