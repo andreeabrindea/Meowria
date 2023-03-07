@@ -2,12 +2,16 @@
     display: flex;
     flex-direction: column;
 }
+
 .map{
-  
-  margin-left: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
+
 .introduction{
-    margin-top: 100px;
-    margin-left: 100px;
+    margin-top: 6vh;
+    margin-left: 2vh;
     font-family: 'SourceSansPro-Regular';
 }
