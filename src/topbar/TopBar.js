@@ -17,7 +17,7 @@ export default function TopBar() {
             >
               Home
             </Link></li>
-          <li className="TopListItem"><Link to="/findClinics" style={{ textDecoration: "none", color: "inherit" }}>Clinics</Link></li>
+          <li className="TopListItem"><Link to="/clinics" style={{ textDecoration: "none", color: "inherit" }}>Clinics</Link></li>
           <li className="TopListItem"><Link to="/about" style={{ textDecoration: "none", color: "inherit" }}>About</Link></li>
         </ul>
       </div>
