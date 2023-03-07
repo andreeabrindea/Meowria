@@ -6,7 +6,7 @@ export default function TopBar() {
     return (
         <div className="TOP">
              <div className="topLeft">
-             <img className="logoImg" src={logo} alt="cat" height="100"></img>
+             <img className="logoImg" src={logo} alt="cat"></img>
              </div>
              <div className="topCenter">
         <ul className="TopList">
