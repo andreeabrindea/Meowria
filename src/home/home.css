@@ -18,14 +18,14 @@ h1 {
 
 .description {
   width: 100vh;
-  font-size: 2.5vh;
+  font-size: 2.3vh;
   font-family: 'SourceSansPro-Regular';
   
   }
 
 @media (max-width: 768px) {
   .description {
-    font-size: 2.5vh;
+    font-size: 2.3vh;
     width: 100%;
   }
 }
@@ -36,11 +36,17 @@ h1 {
   margin-right: 10vh ;
   margin-left: 10vh;
 }
+@media (max-width: 768px) {
+  .headerImg {
+    height: 35vh;
+
+  }
+}
 
 .donotforget{
     margin-top: 5vh;
     margin-right: 5vh;
-    font-size: 2.5vh;
+    font-size: 2.3vh;
     font-family: 'SourceSansPro-Regular';
 }
 .moreAbout{

@@ -8,7 +8,7 @@
     align-items: center;
     z-index: 999;
   }
-
+  
   .topLeft {
     flex: 1;
     display: flex;
@@ -20,15 +20,14 @@
   .TopList {
     display: flex;
     justify-content: center;
-    margin-right: 1vh;
+    margin: 0;
     list-style: none;
     padding: 0;
-    background-color: white;
+    margin-right: 10vh;
   }
   
   .TopListItem {
-    margin-right: 1vh;
-    margin-left: 1vh;
+    margin-right: 20px;
     font-size: 18px;
     font-weight: 300;
     cursor: pointer;
@@ -43,9 +42,9 @@
   .logoImg{
     height: 100px;
   }
+  
   @media (max-width: 768px) {
     .logoImg {
-  
-      height: 80px;
+      height: 80px;;
     }
   }
