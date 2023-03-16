@@ -72,51 +72,51 @@ export default function MultiStepForm() {
           <div class="container">
             <label class="checkbox">
                 <input type="checkbox" />
-                Checkbox 1
+                Symptom 1
             </label>
             <label class="checkbox">
                 <input type="checkbox" />
-                Checkbox 2
+                Symptom 2
             </label>
             <label class="checkbox">
                 <input type="checkbox" />
-                Checkbox 3
+                Symptom 3
             </label>
             <label class="checkbox">
                 <input type="checkbox" />
-                Checkbox 4
+                Symptom 4
             </label>
             <label class="checkbox">
                 <input type="checkbox" />
-                Checkbox 5
+                Symptom 5
             </label>
             <label class="checkbox">
                 <input type="checkbox" />
-                Checkbox 6
+                Symptom 6
             </label>
             <label class="checkbox">
                 <input type="checkbox" />
-                Checkbox 1
+                Symptom 7
             </label>
             <label class="checkbox">
                 <input type="checkbox" />
-                Checkbox 2
+                Symptom 8
             </label>
             <label class="checkbox">
                 <input type="checkbox" />
-                Checkbox 3
+                Symptom 9
             </label>
             <label class="checkbox">
                 <input type="checkbox" />
-                Checkbox 4
+                Symptom 10
             </label>
             <label class="checkbox">
                 <input type="checkbox" />
-                Checkbox 5
+                Symptom 11
             </label>
             <label class="checkbox">
                 <input type="checkbox" />
-                Checkbox 6
+                Symptom 12
             </label>
             </div>
 
