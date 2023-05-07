@@ -6,7 +6,7 @@ export default function FindClinics() {
         <div className="FindClinics">
             <TopBar></TopBar>
             <div className="introduction">
-            <p>Here you will find all the veterinarian clinics from Cluj-Napoca</p>
+            <p>Here you will find all the emergency departments from Cluj-Napoca</p>
             </div>
         <div className="map">
             <MapComponent></MapComponent>

@@ -11,16 +11,18 @@ export default function MultiStepForm() {
     address: "",
   });
   const [symptoms, setSymptoms] = useState([]);
+  const [checkedSymptoms, setCheckedSymptoms] = useState([]);
+  const [diagnosis, setDiagnosis] = useState("");
 
   useEffect(() => {
     axios.request({
       method: 'get',
-      url: 'http://127.0.0.1:5000/symptoms'
+      url: 'https://meowria-be.fly.dev/symptoms'
     })
     .then((response) => setSymptoms(response.data.symptoms)) 
     .catch((error) => console.log(error));
   }, [])
-  
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
@@ -36,27 +38,55 @@ export default function MultiStepForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Do something with the form data
     console.log(formData);
+    console.log(checkedSymptoms);
+  
+    if (currentPage === 3) {
+      const symptomsJson = { symptoms: checkedSymptoms };
+      axios.post('https://meowria-be.fly.dev/predict', symptomsJson)
+        .then(function (response) {
+          console.log(response);
+          setDiagnosis(response.data.disease); // change the property to disease
+          nextPage();
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    } else {
+      nextPage();
+    }
+  };
+  
+  const handleCheckboxChange = (event) => {
+    const symptom = event.target.value;
+    const isChecked = event.target.checked;
+    if (isChecked) {
+      setCheckedSymptoms([...checkedSymptoms, symptom]);
+    } else {
+      setCheckedSymptoms(checkedSymptoms.filter((s) => s !== symptom));
+    }
   };
 
-  const renderSymptoms = symptoms.map((symptom) => 
-  <label className="checkbox">
-    <input type="checkbox" />
-    { symptom }
-  </label>
-  );
-  
+  const renderSymptoms = symptoms.map((symptom) => (
+    <label key={symptom} className="checkbox">
+      <input
+        type="checkbox"
+        value={symptom}
+        onChange={handleCheckboxChange}
+        checked={checkedSymptoms.includes(symptom)}
+      />
+      {symptom}
+    </label>
+  ));
 
   return (
     <div>
       {currentPage === 1 && (
         <div>
           <h1>Which is your general health?</h1>
-          <form onSubmit={nextPage}>
+          <form onSubmit={handleSubmit}>
           <label htmlor="health">Type:</label>
-          <input id="health" name="health">
-          </input>
+          <input id="health" name="health"/>
             <button type="submit">Next</button>
           </form>
         </div>
@@ -64,16 +94,15 @@ export default function MultiStepForm() {
       {currentPage === 2 && (
         <div>
           <h1>How old are you?</h1>
-          <form onSubmit={nextPage}>
-            <label>
-              Age:
-              <input
-                type="number"
-                name="age"
-                value={formData.age}
-                onChange={handleChange}
-              />
-            </label>
+          <form onSubmit={handleSubmit}>
+          <label key="age-input-label">
+                  Age:
+                  <input
+                  type="number"
+                  name="age"
+                />
+              </label>
+
             <button type="button" onClick={previousPage}>
               Previous
             </button>
@@ -84,7 +113,7 @@ export default function MultiStepForm() {
       {currentPage === 3 && (
         <div>
           <h1>Which symptoms have you shown?</h1>
-          <form onSubmit={nextPage}>
+          <form onSubmit={handleSubmit}>
           <div className="container">
             { renderSymptoms } 
           </div>
@@ -96,23 +125,23 @@ export default function MultiStepForm() {
           </form>
         </div>
       )}
-          {currentPage === 4 && (
-        <div>
-          <h1>Type of Priority:</h1>
-          <form onSubmit={nextPage}>
-         <p>Possible diagnose</p>
-         <p>Consult a vet or find one on the map.</p>
-         <button type="button" onClick={previousPage}>
-              Previous
-            </button>
-            <button type="submit">Next</button>
-          </form>
-        </div>
-      )}
+         {currentPage === 4 && (
+            <div>
+              <h1>{diagnosis}</h1>
+              <form onSubmit={handleSubmit}>
+                {/* <p>{diagnosis}</p> */}
+                <p>Consult a doctor.</p>
+                <button type="button" onClick={previousPage}>
+                  Previous
+                </button>
+                <button type="submit">Next</button>
+              </form>
+            </div>
+        )}
           {currentPage === 5 && (
         <div>
           <h1>Send the results to e-mail:</h1>
-          <form onSubmit={nextPage}>
+          <form onSubmit={handleSubmit}>
           <label>
               Email:
               <input
