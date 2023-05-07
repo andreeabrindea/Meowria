@@ -1,6 +1,6 @@
 import TopBar from "../topbar/TopBar";
 import "./home.css";
-import headerImage from "./headerImage.png";
+import headerImage from "./header-image.jpg";
 import MultiStepForm from "./MultiStepForm";
 console.log(headerImage);
 
