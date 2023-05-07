@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from 'axios';
 import "./multiStepForm.css";
+
 export default function MultiStepForm() {
   const [currentPage, setCurrentPage] = useState(1);
   const [formData, setFormData] = useState({
@@ -8,7 +10,17 @@ export default function MultiStepForm() {
     age: "",
     address: "",
   });
+  const [symptoms, setSymptoms] = useState([]);
 
+  useEffect(() => {
+    axios.request({
+      method: 'get',
+      url: 'http://127.0.0.1:5000/symptoms'
+    })
+    .then((response) => setSymptoms(response.data.symptoms)) 
+    .catch((error) => console.log(error));
+  }, [])
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
@@ -28,26 +40,30 @@ export default function MultiStepForm() {
     console.log(formData);
   };
 
+  const renderSymptoms = symptoms.map((symptom) => 
+  <label className="checkbox">
+    <input type="checkbox" />
+    { symptom }
+  </label>
+  );
+  
+
   return (
     <div>
       {currentPage === 1 && (
         <div>
-          <h1>What breed is your cat?</h1>
+          <h1>Which is your general health?</h1>
           <form onSubmit={nextPage}>
-          <label for="breed">Choose a breed:</label>
-<select id="breeds" name="breeds">
-  <option value="siamese">Siamese</option>
-  <option value="tabby">Tabby</option>
-  <option value="maine">Maine Coon</option>
-  <option value="persian">Persian</option>
-</select>
+          <label htmlor="health">Type:</label>
+          <input id="health" name="health">
+          </input>
             <button type="submit">Next</button>
           </form>
         </div>
       )}
       {currentPage === 2 && (
         <div>
-          <h1>How old is your cat?</h1>
+          <h1>How old are you?</h1>
           <form onSubmit={nextPage}>
             <label>
               Age:
@@ -67,58 +83,11 @@ export default function MultiStepForm() {
       )}
       {currentPage === 3 && (
         <div>
-          <h1>Which symptoms has your cat shown?</h1>
+          <h1>Which symptoms have you shown?</h1>
           <form onSubmit={nextPage}>
-          <div class="container">
-            <label class="checkbox">
-                <input type="checkbox" />
-                Symptom 1
-            </label>
-            <label class="checkbox">
-                <input type="checkbox" />
-                Symptom 2
-            </label>
-            <label class="checkbox">
-                <input type="checkbox" />
-                Symptom 3
-            </label>
-            <label class="checkbox">
-                <input type="checkbox" />
-                Symptom 4
-            </label>
-            <label class="checkbox">
-                <input type="checkbox" />
-                Symptom 5
-            </label>
-            <label class="checkbox">
-                <input type="checkbox" />
-                Symptom 6
-            </label>
-            <label class="checkbox">
-                <input type="checkbox" />
-                Symptom 7
-            </label>
-            <label class="checkbox">
-                <input type="checkbox" />
-                Symptom 8
-            </label>
-            <label class="checkbox">
-                <input type="checkbox" />
-                Symptom 9
-            </label>
-            <label class="checkbox">
-                <input type="checkbox" />
-                Symptom 10
-            </label>
-            <label class="checkbox">
-                <input type="checkbox" />
-                Symptom 11
-            </label>
-            <label class="checkbox">
-                <input type="checkbox" />
-                Symptom 12
-            </label>
-            </div>
+          <div className="container">
+            { renderSymptoms } 
+          </div>
 
             <button type="button" onClick={previousPage}>
               Previous
