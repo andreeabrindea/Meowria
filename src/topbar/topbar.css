@@ -1,5 +1,5 @@
 .TOP {
-    width: 100%;
+    width: 100vw;
     height: 50px;
     background-color: rgb(255, 255, 255);
     position: sticky;
@@ -17,11 +17,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 5vh;
+    margin-top: 2vh;
   }
   .logoImg{
-    padding-bottom: 10px;
+    padding-bottom: 2px;
     position: absolute;
+    height: 70px;
+    width: auto;
 
   }
   
@@ -47,9 +49,7 @@
     justify-content: flex-end;
   }
   
-  .logoImg{
-    height: 100px;
-  }
+
   
   @media (max-width: 768px) {
     .logoImg {
