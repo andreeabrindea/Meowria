@@ -6,7 +6,7 @@ import {Icon} from 'leaflet'
 
 class MapComponent extends Component {
   render() {
-    const position = [46.7712, 23.6236]; // Cluj-Napoca coordinates
+    const position = [46.766,23.5862]; // Cluj-Napoca coordinates
 
     return (
         
@@ -17,7 +17,7 @@ class MapComponent extends Component {
         />
         <Marker position={[46.7712, 23.6236]} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
           <Popup>
-            Cluj-Napoca, Romania
+            Clinicilor 3-5
           </Popup>
         </Marker>
       </MapContainer>

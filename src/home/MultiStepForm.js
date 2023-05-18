@@ -16,6 +16,8 @@ export default function MultiStepForm() {
   const [checkedSymptoms, setCheckedSymptoms] = useState([]);
   const [filteredSymptoms, setFilteredSymptoms] = useState([]);
   const [diagnosis, setDiagnosis] = useState("");
+  const [description, setDescription] = useState("");
+  const [precautions, setPrecautions] = useState("");
   const [healthRating, setHealthRating] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -61,7 +63,9 @@ export default function MultiStepForm() {
       axios.post('https://meowria-be.fly.dev/predict', symptomsJson)
         .then(function (response) {
           console.log(response);
-          setDiagnosis(response.data.disease); // change the property to disease
+          setDiagnosis(response.data.disease);
+          setDescription(response.data.description);
+          setPrecautions(response.data.precautions);
           nextPage();
         })
         .catch(function (error) {
@@ -114,7 +118,7 @@ export default function MultiStepForm() {
                 step={1}
                 value={healthRating}
                 onChange={(value)=> setHealthRating(value)}
-                style={{ width: "200px" }} // Adjust the width here
+                style={{ width: "100px" }}
                 />
                 <input
                 type="number"
@@ -172,8 +176,8 @@ export default function MultiStepForm() {
     <div>
       <h1>{diagnosis}</h1>
       <form onSubmit={handleSubmit}>
-        {/* <p>{diagnosis}</p> */}
-        <p>Consult a doctor.</p>
+        <p>{description}</p>
+        <p>Precautions: {precautions}</p>
         <button type="button" onClick={previousPage}>
           Previous
         </button>
