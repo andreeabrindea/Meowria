@@ -1,9 +1,9 @@
 import "./topbar.css";
 import { Link } from "react-router-dom";
-import icon from "./enter.png";
+import icon from "./telemedicine.png";
 import logo from "./queenMeowria.png";
 console.log(logo);
-export default function TopBar() {
+export default function TopBarLogged() {
     return (
         <div className="TOP">
              <div className="topLeft">
@@ -20,7 +20,7 @@ export default function TopBar() {
             </Link></li>
           <li className="TopListItem"><Link to="/clinics" style={{ textDecoration: "none", color: "inherit" }}>Emergency</Link></li>
           <li className="TopListItem"><Link to="/about" style={{ textDecoration: "none", color: "inherit" }}>About</Link></li>
-          <li className="TopListItem"><Link to="/login"><img className="iconImg" src={icon} alt="icon" /></Link></li>
+          <li className="TopListItem"><Link to="#"><img className="iconImg" src={icon} alt="icon" /></Link></li>
         </ul>
       </div>
         </div>

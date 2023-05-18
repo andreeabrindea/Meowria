@@ -20,24 +20,6 @@ export default function Home() {
            <MultiStepForm></MultiStepForm>
            </div>
            <div className="do-not-forget">
-            <div className="join">
-                <h1>Create an account</h1>
-                <p>Make it easier to track your symptoms over time.</p>
-                <form>
-                <label htmlFor="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" id="email" required></input>
-
-                <label htmlFor="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" id="psw" required></input>
-
-                <label htmlFor="psw-repeat"><b>Repeat Password</b></label>
-                <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required></input>
-                <div className="joinButtons">
-                <button>Join</button>
-                <button>LogIn</button>
-                </div>
-                </form>
-            </div>
            <div className="moreAbout">
            <p>© 2023 - Queen Meowria -  made with love for humans. It is an app designed to diagnose humans. It can be a valuable tool for individuals and healthcare professionals alike. With the help of such an app, individuals can quickly identify any potential health issues and seek appropriate treatment before the problem worsens. Similarly, healthcare professionals can use the app to streamline their diagnostic process and provide better care for their patients.</p>
            </div>
