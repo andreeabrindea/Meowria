@@ -28,7 +28,7 @@ export default function Register() {
     };
 
     // Make the POST request
-    fetch("http://localhost:8080/register", {
+    fetch("https://meowriabackend.fly.dev/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -41,7 +41,7 @@ export default function Register() {
            navigate("/");
           
         } else {
-          setErrorMessage("Invalid");
+          setErrorMessage("Username already exists");
         }
       })
       .catch((error) => {
@@ -80,8 +80,8 @@ export default function Register() {
           <label htmlFor="confirm-password">Confirm Password:</label>
           <input type="password" id="confirm-password" name="confirm-password" required /><br />
           <span id="passwordError" style={{ color: "red" }}>{errorMessage}</span><br />
-          <input type="submit" value="Register" id="registerBtn" />
-          <button><Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>Login</Link></button>
+          <button type="submit" id="registerBtn">Register</button>
+          <button id="login-button"><Link to="/login" style={{ textDecoration: "none", color: "inherit" }}>Login</Link></button>
         </form>
       </div>
     </div>
