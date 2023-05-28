@@ -19,11 +19,11 @@ export default function Account() {
       const decodedToken = jwt(sessionToken);
       const userId = decodedToken.user_id;
 
-      fetch(`hhttps://meowriabackend.fly.dev/api/records/${userId}`)
+      fetch(`https://meowriabackend.fly.dev/api/records/${userId}`)
         .then((response) => response.json())
         .then((data) => {
           setRecords(data);
-          return axios.get(`hhttps://meowriabackend.fly.dev/api/users/${userId}`);
+          return axios.get(`https://meowriabackend.fly.dev/api/users/${userId}`);
         })
         .then((response) => {setUsername(response.data[0].username);
         console.log(response.data[0].username);})
