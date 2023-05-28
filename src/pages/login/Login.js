@@ -10,23 +10,20 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
 
   useEffect(() => {
     // Check if the user is already logged in (e.g., on page load)
     const sessionToken = Cookies.get("sessionToken");
     if (sessionToken) {
-      setIsLoggedIn(true);
+      navigate("/");
     }
-  }, []);
+  }, [navigate]);
 
   const handleLogin = (response) => {
     if (response.ok) {
       // Handle successful login
       response.json().then((data) => {
         Cookies.set("sessionToken", data.session_token, { expires: new Date(data.expiry) });
-        setIsLoggedIn(true);
         navigate("/");
       });
     } else {
@@ -57,8 +54,7 @@ export default function Login() {
 
   return (
     <div className="login-page">
-      <TopBar></TopBar>
-
+      <TopBar />
       <div className="login-form">
         <img className="login-img" src={icon} alt="doctor"></img>
         <form onSubmit={handleSubmit}>

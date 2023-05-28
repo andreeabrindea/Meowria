@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import icon from "./enter.png";
 import account from "./telemedicine.png"
 import logo from "./queenMeowria.png";
-import jwt from 'jwt-decode';
 import Cookies from 'js-cookie';
 console.log(logo);
 

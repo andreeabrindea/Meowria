@@ -3,7 +3,6 @@ import TopBar from '../topbar/TopBar';
 import './home.css';
 import headerImage from './header-image.jpg';
 import MultiStepForm from './MultiStepForm';
-import jwt from 'jwt-decode';
 import Cookies from 'js-cookie';
 
 export default function Home() {
