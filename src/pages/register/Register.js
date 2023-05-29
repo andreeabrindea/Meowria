@@ -7,6 +7,7 @@ import Cookies from 'js-cookie';
 
 
 
+
 export default function Register() {
   const navigate = useNavigate();
   const [firstname, setFirstname] = useState("")
@@ -35,15 +36,15 @@ export default function Register() {
       },
       body: JSON.stringify(data)
     })
+      .then((response) => response.json())
       .then((response) => {
-        // Handle the response
-        if (response.ok) {
-           Cookies.set("sessionToken", data.session_token, { expires: new Date(data.expiry) });
-           navigate("/");
 
-          
-        } else {
+        // Handle the response
+        if (!response) {
           setErrorMessage("Username already exists");
+        } else {
+          Cookies.set("sessionToken", response.session_token, { expires: new Date(response.expiry) });
+           navigate("/");
         }
       })
       .catch((error) => {
@@ -51,6 +52,7 @@ export default function Register() {
         setErrorMessage("An error occurred. Please try again later.");
       });
   };
+  
 
   return (  
     <div className="register-page">

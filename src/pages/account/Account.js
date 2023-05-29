@@ -28,7 +28,6 @@ export default function Account() {
           })
           .then((response) => {
             setUsername(response.data[0].username);
-            console.log(response.data[0].username);
           })
           .catch((error) => console.log(error))
           .finally(() => setIsLoading(false));
