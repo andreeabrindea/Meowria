@@ -57,9 +57,10 @@ export default function Account() {
               <tbody>
                 {records.map((record) => (
                   <tr key={record.id}>
-                    <td>{record.date}</td>
-                    <td>{record.symptoms}</td>
-                    <td>{record.disease}</td>
+                  <td style={{ textAlign: 'center', verticalAlign: 'middle', padding: '10px'}}>{record.date}</td>
+                  <td style={{ textAlign: 'center', verticalAlign: 'middle', padding: '10px'}}>{record.symptoms}</td>
+                  <td style={{ textAlign: 'center', verticalAlign: 'middle', padding: '10px'}}>{record.disease}</td>
+
                   </tr>
                 ))}
               </tbody>

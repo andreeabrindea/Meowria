@@ -3,6 +3,8 @@ import "./register.css";
 import icon from "./register.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Cookies from 'js-cookie';
+
 
 
 export default function Register() {
