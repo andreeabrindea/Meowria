@@ -31,6 +31,7 @@ export default function Home() {
         ) : (
           <div className="not-logged in">
             <h1>Register or Log into your account</h1>
+            <p>By creating an account you can keep track of your symptoms over time.</p>
             <button id="registerBtn"><Link
               to="/register"
               style={{ textDecoration: "none", color: "inherit" }}
