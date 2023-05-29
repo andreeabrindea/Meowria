@@ -16,19 +16,28 @@ export default function Account() {
   useEffect(() => {
     const sessionToken = Cookies.get('sessionToken');
     if (sessionToken) {
-      const decodedToken = jwt(sessionToken);
-      const userId = decodedToken.user_id;
-
-      fetch(`https://meowriabackend.fly.dev/api/records/${userId}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setRecords(data);
-          return axios.get(`https://meowriabackend.fly.dev/api/users/${userId}`);
-        })
-        .then((response) => {setUsername(response.data[0].username);
-        console.log(response.data[0].username);})
-        .catch((error) => console.log(error))
-        .finally(() => setIsLoading(false));
+      try {
+        const decodedToken = jwt(sessionToken);
+        const userId = decodedToken.user_id;
+  
+        fetch(`https://meowriabackend.fly.dev/api/records/${userId}`)
+          .then((response) => response.json())
+          .then((data) => {
+            setRecords(data);
+            return axios.get(`https://meowriabackend.fly.dev/api/users/${userId}`);
+          })
+          .then((response) => {
+            setUsername(response.data[0].username);
+            console.log(response.data[0].username);
+          })
+          .catch((error) => console.log(error))
+          .finally(() => setIsLoading(false));
+      } catch (error) {
+        console.log('Error decoding token:', error);
+        setIsLoading(false);
+      }
+    } else {
+      setIsLoading(false);
     }
   }, [username]);
 
