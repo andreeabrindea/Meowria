@@ -16,10 +16,8 @@ export default function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const id = Math.floor(Math.random() * 1000) + 1;
     // Create a data object with the username and password
     const data = {
-      id: id,
       firstname: firstname,
       surname: surname,
       username: username,
@@ -38,7 +36,9 @@ export default function Register() {
       .then((response) => {
         // Handle the response
         if (response.ok) {
+           Cookies.set("sessionToken", data.session_token, { expires: new Date(data.expiry) });
            navigate("/");
+
           
         } else {
           setErrorMessage("Username already exists");
