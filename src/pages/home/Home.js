@@ -57,6 +57,7 @@ export default function Home() {
               Similarly, healthcare professionals can use the app to streamline
               their diagnostic process and provide better care for their
               patients.
+              Brindea Andreea-Florina 831
             </p>
           </div>
         </div>
