@@ -6,7 +6,6 @@ import MultiStepForm from './MultiStepForm';
 import Cookies from 'js-cookie';
 
 export default function Home() {
-  // Check if user is logged in
   const sessionToken = Cookies.get('sessionToken');
   const isLoggedIn = !!sessionToken;
 
@@ -49,7 +48,7 @@ export default function Home() {
         <div className="do-not-forget">
           <div className="moreAbout">
             <p>
-              © 2023 - Queen Meowria - made with love for humans. It is an app
+              © 2024 - Queen Meowria - made with love for humans. It is an app
               designed to diagnose humans. It can be a valuable tool for
               individuals and healthcare professionals alike. With the help of
               such an app, individuals can quickly identify any potential health
@@ -57,7 +56,6 @@ export default function Home() {
               Similarly, healthcare professionals can use the app to streamline
               their diagnostic process and provide better care for their
               patients.
-              Brindea Andreea-Florina 831
             </p>
           </div>
         </div>

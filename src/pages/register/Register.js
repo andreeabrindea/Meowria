@@ -6,8 +6,6 @@ import { useState } from "react";
 import Cookies from 'js-cookie';
 
 
-
-
 export default function Register() {
   const navigate = useNavigate();
   const [firstname, setFirstname] = useState("")
@@ -19,7 +17,6 @@ export default function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Create a data object with the username and password
     const data = {
       firstname: firstname,
       surname: surname,
@@ -28,7 +25,6 @@ export default function Register() {
       password: password
     };
 
-    // Make the POST request
     fetch("https://meowriabackend.fly.dev/register", {
       method: "POST",
       headers: {
@@ -39,7 +35,6 @@ export default function Register() {
       .then((response) => response.json())
       .then((response) => {
 
-        // Handle the response
         if (!response) {
           setErrorMessage("Username already exists");
         } else {

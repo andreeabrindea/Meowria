@@ -12,7 +12,6 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    // Check if the user is already logged in (e.g., on page load)
     const sessionToken = Cookies.get("sessionToken");
     if (sessionToken) {
       navigate("/");
@@ -21,7 +20,6 @@ export default function Login() {
 
   const handleLogin = (response) => {
     if (response.ok) {
-      // Handle successful login
       response.json().then((data) => {
         Cookies.set("sessionToken", data.session_token, { expires: new Date(data.expiry) });
         navigate("/");
