@@ -31,18 +31,20 @@ export default function Home() {
           <div className="not-logged in">
             <h1>Register or Log into your account</h1>
             <p>By creating an account you can keep track of your symptoms over time.</p>
-            <button id="registerBtn"><Link
+            <Link
               to="/register"
+              id="registerBtn"
               style={{ textDecoration: "none", color: "inherit" }}
             >
               Register
-            </Link></button>
-            <button id="login-button"><Link
+            </Link>
+            <Link
               to="/login"
+              id="login-button"
               style={{ textDecoration: "none", color: "inherit" }}
             >
               Log in
-            </Link></button>
+            </Link>
           </div>
         )}
         <div className="do-not-forget">

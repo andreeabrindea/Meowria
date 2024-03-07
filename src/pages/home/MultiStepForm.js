@@ -25,11 +25,11 @@ export default function MultiStepForm() {
       method: 'get',
       url: 'https://meowria-be.fly.dev/symptoms'
     })
-    .then((response) => {
-      setSymptoms(response.data.symptoms);
-      setFilteredSymptoms(response.data.symptoms);
-    })
-    .catch((error) => console.log(error));
+      .then((response) => {
+        setSymptoms(response.data.symptoms);
+        setFilteredSymptoms(response.data.symptoms);
+      })
+      .catch((error) => console.log(error));
   }, [])
 
   useEffect(() => {
@@ -74,9 +74,9 @@ export default function MultiStepForm() {
       const sessionToken = Cookies.get('sessionToken');
       const decodedToken = jwt(sessionToken);
       const userId = decodedToken.user_id;
-      
-      
-    
+
+
+
       const recordData = {
         date: new Date().toISOString().slice(0, 10),
         symptoms: symptomsString,
@@ -85,7 +85,7 @@ export default function MultiStepForm() {
         age: parseInt(age),
         rating: healthRating
       };
-  
+
       axios.post('https://meowriabackend.fly.dev/record', recordData)
         .then(function (response) {
           console.log(response);
@@ -127,9 +127,9 @@ export default function MultiStepForm() {
 
   return (
     <div>
-       {(currentPage === 1 || currentPage === 2 || currentPage === 3 || currentPage === 4 || currentPage === 5) && (
+      {(currentPage === 1 || currentPage === 2 || currentPage === 3 || currentPage === 4 || currentPage === 5) && (
         <progress value={progress} max={100} />
-        )}
+      )}
       {currentPage === 1 && (
         <div>
           <h1>Which is your general health?</h1>
@@ -142,93 +142,93 @@ export default function MultiStepForm() {
                 max={5}
                 step={1}
                 value={healthRating}
-                onChange={(value)=> setHealthRating(value)}
+                onChange={(value) => setHealthRating(value)}
                 style={{ width: "100px" }}
-                />
-                <input
+              />
+              <input
                 type="number"
                 min={1}
                 max={5}
                 value={healthRating}
                 onChange={(e) => setHealthRating(e.target.value)}
                 style={{ borderRadius: "5px", marginLeft: "25px" }}
-                />
-                </div>
-                <button type="submit" id="next-button">Next</button>
-                </form>
-                </div>
-                )}
-                {currentPage === 2 && (
-                      <div>
-                        <h1>How old are you?</h1>
-                        <form onSubmit={handleSubmit}>
-                        <label key="age-input-label">
-                        Age:
-                        <input
-                                    type="number"
-                                    min={1}
-                                    max={120}
-                                    name="age"
-                                    id="age-input"
-                                    value={age}
-                                    onChange={(e) => setAge(e.target.value)}
-                                    
-                                  />
-                        </label>
-                        <button type="button" id="prev-button" onClick={previousPage}>
-                  Previous
-                </button>
-                <button type="submit" id="next-button">Next</button>
-                      </form>
-    </div>
-  )}
-  {currentPage === 3 && (
-    <div>
-      <h1>Which symptoms have you shown?</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="container">
-          <input
-            type="text"
-            placeholder="Search symptoms"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          {renderSymptoms}
+              />
+            </div>
+            <button type="submit" id="next-button">Next</button>
+          </form>
         </div>
+      )}
+      {currentPage === 2 && (
+        <div>
+          <h1>How old are you?</h1>
+          <form onSubmit={handleSubmit}>
+            <label key="age-input-label">
+              Age:
+              <input
+                type="number"
+                min={1}
+                max={120}
+                name="age"
+                id="age-input"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
 
-        <button type="button" id="prev-button" onClick={previousPage}>
-          Previous
-        </button>
-        <button type="submit" id="next-button">Next</button>
-      </form>
-    </div>
-  )}
-  {currentPage === 4 && (
-    <div>
-      <h1>{diagnosis}</h1>
-      <form onSubmit={handleSubmit}>
-        <p>{description}</p>
-        <p>Precautions: {precautions}</p>
-        <button type="button" id="prev-button" onClick={previousPage}>
-          Previous
-        </button>
-        <button type="submit" id="next-button">Next</button>
-      </form>
-    </div>
-  )}
+              />
+            </label>
+            <button type="button" id="prev-button" onClick={previousPage}>
+              Previous
+            </button>
+            <button type="submit" id="next-button">Next</button>
+          </form>
+        </div>
+      )}
+      {currentPage === 3 && (
+        <div>
+          <h1>Which symptoms have you shown?</h1>
+          <form onSubmit={handleSubmit}>
+            <div className="container">
+              <input
+                type="text"
+                placeholder="Search symptoms"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              {renderSymptoms}
+            </div>
 
-  {currentPage === 5 && (
-    <div>
-      <h1>Done!</h1>
-      <form onSubmit={handleSubmit}>
-        <p>Form submitted!</p>
-        <button type="button" id="prev-button" onClick={previousPage}>
-          Previous
-        </button>
-        <button type="submit" id="next-button">Submit</button>
-      </form>
+            <button type="button" id="prev-button" onClick={previousPage}>
+              Previous
+            </button>
+            <button type="submit" id="next-button">Next</button>
+          </form>
+        </div>
+      )}
+      {currentPage === 4 && (
+        <div>
+          <h1>{diagnosis}</h1>
+          <form onSubmit={handleSubmit}>
+            <p>{description}</p>
+            <p>Precautions: {precautions}</p>
+            <button type="button" id="prev-button" onClick={previousPage}>
+              Previous
+            </button>
+            <button type="submit" id="next-button">Next</button>
+          </form>
+        </div>
+      )}
+
+      {currentPage === 5 && (
+        <div>
+          <h1>Done!</h1>
+          <form onSubmit={handleSubmit}>
+            <p>Form submitted!</p>
+            <button type="button" id="prev-button" onClick={previousPage}>
+              Previous
+            </button>
+            <button type="submit" id="next-button">Submit</button>
+          </form>
+        </div>
+      )}
     </div>
-  )}
-</div>
-);
+  );
 }
