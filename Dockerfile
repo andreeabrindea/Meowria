@@ -1,20 +1,21 @@
-# pull official base image
-FROM node:18.14.0
+FROM node:21.0.0 AS build
 
-# set working directory
 WORKDIR /app
 
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
+COPY package*.json ./
 
-# install app dependencies
-COPY package.json ./
-COPY package-lock.json ./
 RUN npm install --silent
-RUN npm install react-scripts@3.4.1 -g --silent
 
-# add app
-COPY . ./
+COPY . .
 
-# start app
-CMD ["npm", "start"]
+RUN npm run build
+
+FROM node:21.0.0
+
+WORKDIR /app
+
+RUN npm install -g serve
+
+COPY --from=build /app/dist .
+
+CMD ["serve", "-p", "80", "-s", "."]

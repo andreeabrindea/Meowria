@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
-import axios from 'axios';
-import "./multiStepForm.css";
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
-import jwt from 'jwt-decode';
-import Cookies from 'js-cookie';
+import axios from "axios";
+import Cookies from "js-cookie";
 
 export default function MultiStepForm() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -19,6 +15,15 @@ export default function MultiStepForm() {
   const [searchTerm, setSearchTerm] = useState("");
 
 
+  const nextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const previousPage = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const progress = (currentPage / 6) * 100;
 
   useEffect(() => {
     axios.request({
@@ -39,18 +44,8 @@ export default function MultiStepForm() {
     setFilteredSymptoms(filtered);
   }, [searchTerm, symptoms]);
 
-
-  const nextPage = () => {
-    setCurrentPage(currentPage + 1);
-  };
-
-  const previousPage = () => {
-    setCurrentPage(currentPage - 1);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(checkedSymptoms);
 
     if (currentPage === 3) {
       const symptomsJson = { symptoms: checkedSymptoms };
@@ -74,8 +69,6 @@ export default function MultiStepForm() {
       const sessionToken = Cookies.get('sessionToken');
       const decodedToken = jwt(sessionToken);
       const userId = decodedToken.user_id;
-
-
 
       const recordData = {
         date: new Date().toISOString().slice(0, 10),
@@ -114,15 +107,13 @@ export default function MultiStepForm() {
     <label key={symptom} className="checkbox">
       <input
         type="checkbox"
-        value={symptom}
+        value={symptom.replace("_\g", " ")}
         onChange={handleCheckboxChange}
         checked={checkedSymptoms.includes(symptom)}
       />
       {symptom}
     </label>
   ));
-
-  const progress = (currentPage / 6) * 100;
 
 
   return (
@@ -136,25 +127,17 @@ export default function MultiStepForm() {
           <form onSubmit={handleSubmit}>
             <div className="container">
               <label htmlFor="halthRating">Health Rating:</label>
-              <Slider
-                id="healthRating"
-                min={1}
-                max={5}
-                step={1}
-                value={healthRating}
-                onChange={(value) => setHealthRating(value)}
-                style={{ width: "100px" }}
-              />
               <input
                 type="number"
                 min={1}
                 max={5}
-                value={healthRating}
-                onChange={(e) => setHealthRating(e.target.value)}
                 style={{ borderRadius: "5px", marginLeft: "25px" }}
+                value={healthRating}
+                onChange={(event) => setHealthRating(event.target.value)}
+
               />
             </div>
-            <button type="submit" id="next-button">Next</button>
+            <button type="submit" id="next-button" className="control-page-button">Next</button>
           </form>
         </div>
       )}
@@ -171,14 +154,13 @@ export default function MultiStepForm() {
                 name="age"
                 id="age-input"
                 value={age}
-                onChange={(e) => setAge(e.target.value)}
-
+                onChange={(event) => setAge(event.target.value)}
               />
             </label>
-            <button type="button" id="prev-button" onClick={previousPage}>
+            <button type="button" id="prev-button" className="control-page-button" onClick={previousPage}>
               Previous
             </button>
-            <button type="submit" id="next-button">Next</button>
+            <button type="submit" id="next-button" className="control-page-button" onClick={nextPage}>Next</button>
           </form>
         </div>
       )}
@@ -196,23 +178,23 @@ export default function MultiStepForm() {
               {renderSymptoms}
             </div>
 
-            <button type="button" id="prev-button" onClick={previousPage}>
+            <button type="button" id="prev-button" className="control-page-button" onClick={previousPage}>
               Previous
             </button>
-            <button type="submit" id="next-button">Next</button>
+            <button type="submit" id="next-button" className="control-page-button">Next</button>
           </form>
         </div>
       )}
       {currentPage === 4 && (
         <div>
           <h1>{diagnosis}</h1>
-          <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
             <p>{description}</p>
             <p>Precautions: {precautions}</p>
-            <button type="button" id="prev-button" onClick={previousPage}>
+            <button type="button" id="prev-button" className="control-page-button" onClick={previousPage}>
               Previous
             </button>
-            <button type="submit" id="next-button">Next</button>
+            <button type="submit" id="next-button" className="control-page-button">Next</button>
           </form>
         </div>
       )}
@@ -222,10 +204,10 @@ export default function MultiStepForm() {
           <h1>Done!</h1>
           <form onSubmit={handleSubmit}>
             <p>Form submitted!</p>
-            <button type="button" id="prev-button" onClick={previousPage}>
+            <button type="button" id="prev-button" className="control-page-button" onClick={previousPage}>
               Previous
             </button>
-            <button type="submit" id="next-button">Submit</button>
+            <button type="submit" id="next-button" className="control-page-button">Submit</button>
           </form>
         </div>
       )}

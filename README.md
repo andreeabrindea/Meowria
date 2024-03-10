@@ -1,7 +1,8 @@
-# Queen Meowria
-Web application for symptom prediction and symptom monitoring.
+# React + Vite
 
-##### It is an application designed to diagnose humans. It can be a valuable tool for individuals and healthcare professionals alike. With the help of such an app, individuals can quickly identify any potential health issues and seek appropriate treatment before the problem worsens. Similarly, healthcare professionals can use the app to streamline their diagnostic process and provide better care for their patients. 
-##### Backend source code: 
-☺ [Users management](https://github.com/andreeabrindea/Meowria-Backend) 
-☤ [Symptom prediction](https://github.com/andreeabrindea/Meworia-BE) 
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
